@@ -4,11 +4,13 @@ import br.com.fernanda.wsRESTful_Jersey_Hibernate.dao.IProductDao;
 import br.com.fernanda.wsRESTful_Jersey_Hibernate.dao.ProductDao;
 import br.com.fernanda.wsRESTful_Jersey_Hibernate.model.Product;
 
+
 import java.util.List;
+
 
 public class  ProductBean implements IProductBean {
 
-    private IProductDao productDao = new ProductDao();
+   private IProductDao productDao = new ProductDao();
 
 
     @Override

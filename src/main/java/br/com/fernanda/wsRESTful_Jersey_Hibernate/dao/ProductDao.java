@@ -3,22 +3,35 @@ package br.com.fernanda.wsRESTful_Jersey_Hibernate.dao;
 import br.com.fernanda.wsRESTful_Jersey_Hibernate.bean.JpaResourceBean;
 import br.com.fernanda.wsRESTful_Jersey_Hibernate.model.Product;
 
+import javax.ejb.TransactionManagement;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.*;
+
 import java.util.List;
 
+@TransactionManagement
 public class ProductDao implements IProductDao {
+
+    @Inject
+    UserTransaction userTransaction;
+
+    public UserTransaction getUserTransaction() {
+        return this.getUserTransaction();
+    }
+
 
     @Override
     public void record(Product product) throws Exception {
         EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
 
+
         try{
-            em.getTransaction().begin();
+            this.getUserTransaction().begin();
             em.persist(product);
-            em.getTransaction().commit();
+            this.getUserTransaction().commit();
         }catch (Exception e){
-            em.getTransaction().rollback();
             throw new Exception( e);
         }finally{
             em.close();
@@ -33,15 +46,15 @@ public class ProductDao implements IProductDao {
         Product productFind = new Product();
 
         try {
-            em.getTransaction().begin();
+            this.getUserTransaction().begin();
             productFind = this.findById(product.getId());
             productFind.setName(product.getName());
             productFind.setQuantity(product.getQuantity());
             productFind.setValue(product.getValue());
             em.merge(productFind);
-            em.getTransaction().commit();
+            this.getUserTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            this.getUserTransaction().rollback();
             throw new Exception(e);
         } finally {
             em.close();
@@ -54,13 +67,13 @@ public class ProductDao implements IProductDao {
         EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
 
         try {
-            em.getTransaction().begin();
+            this.getUserTransaction().begin();
             Query query = em.createQuery("DELETE  FROM Product where id = :idProduct ");
             query.setParameter("idProduct", product.getId());
             query.executeUpdate();
-            em.getTransaction().commit();
+            this.getUserTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            this.getUserTransaction().rollback();
             throw new Exception(e);
         } finally {
             em.close();
@@ -76,13 +89,18 @@ public class ProductDao implements IProductDao {
 
 
         try {
+            this.getUserTransaction().begin();
             String sql = "SELECT product from Product product WHERE product.name = :name";
             Query query = em.createQuery(sql);
             query.setParameter("name", name);
             list = query.getResultList();
+            this.getUserTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            this.getUserTransaction().rollback();
             throw new Exception(e);
+        }
+        finally {
+            em.close();
         }
         if (list != null && list.size() > 0) {
             product = list.get(0);
@@ -100,13 +118,14 @@ public class ProductDao implements IProductDao {
 
 
         try {
-            em.getTransaction().begin();
+            this.getUserTransaction().begin();
             String sql = "SELECT product from Product product WHERE product.id = :id";
             Query query = em.createQuery(sql);
             query.setParameter("id", id);
             list = query.getResultList();
+            this.getUserTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            this.getUserTransaction().rollback();
             throw new Exception(e);
         } finally {
             em.close();
@@ -127,12 +146,13 @@ public class ProductDao implements IProductDao {
 
 
         try {
-            em.getTransaction().begin();
+            this.getUserTransaction().begin();
             String sql = "SELECT product from Product product";
             Query query = em.createQuery(sql);
             list = query.getResultList();
+            this.getUserTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            this.getUserTransaction().rollback();
             throw new Exception(e);
         } finally {
             em.close();

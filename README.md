@@ -1,0 +1,1 @@
+#REST webservice project with Jersey and Hibernate. The settings being adjusted.

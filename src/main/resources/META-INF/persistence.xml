@@ -6,6 +6,7 @@
              version="2.0">
 
     <persistence-unit name="product" transaction-type="RESOURCE_LOCAL">
+
         <class>br.com.fernanda.wsRESTful_Jersey_Hibernate.model.Product</class>
 
 
@@ -16,6 +17,7 @@
             <property name="javax.persistence.jdbc.password" value="1234"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
+
         </properties>
     </persistence-unit>
 </persistence>
