@@ -34,7 +34,7 @@ public class  ProductBean implements IProductBean {
     }
 
     @Override
-    public Product findById(long id) throws Exception {
+    public Product findById(int id) throws Exception {
         return productDao.findById(id);
     }
 

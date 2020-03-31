@@ -10,6 +10,6 @@ public interface IProductDao {
     void update (Product product) throws Exception;
     void remove (Product product) throws Exception;
     Product findByName(String name) throws Exception;
-    Product findById (long id) throws Exception;
+    Product findById (int id) throws Exception;
     List<Product> findAll () throws Exception;
 }

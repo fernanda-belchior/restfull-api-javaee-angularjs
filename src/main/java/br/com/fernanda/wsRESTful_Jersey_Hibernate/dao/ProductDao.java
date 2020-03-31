@@ -2,24 +2,14 @@ package br.com.fernanda.wsRESTful_Jersey_Hibernate.dao;
 
 import br.com.fernanda.wsRESTful_Jersey_Hibernate.bean.JpaResourceBean;
 import br.com.fernanda.wsRESTful_Jersey_Hibernate.model.Product;
-
-import javax.ejb.TransactionManagement;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.transaction.*;
+
 
 import java.util.List;
 
-@TransactionManagement
+
 public class ProductDao implements IProductDao {
-
-    @Inject
-    UserTransaction userTransaction;
-
-    public UserTransaction getUserTransaction() {
-        return this.getUserTransaction();
-    }
 
 
     @Override
@@ -28,9 +18,9 @@ public class ProductDao implements IProductDao {
 
 
         try{
-            this.getUserTransaction().begin();
+            em.getTransaction().begin();
             em.persist(product);
-            this.getUserTransaction().commit();
+            em.getTransaction().commit();
         }catch (Exception e){
             throw new Exception( e);
         }finally{
@@ -46,15 +36,15 @@ public class ProductDao implements IProductDao {
         Product productFind = new Product();
 
         try {
-            this.getUserTransaction().begin();
+            em.getTransaction().begin();
             productFind = this.findById(product.getId());
             productFind.setName(product.getName());
             productFind.setQuantity(product.getQuantity());
             productFind.setValue(product.getValue());
             em.merge(productFind);
-            this.getUserTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
-            this.getUserTransaction().rollback();
+            em.getTransaction().rollback();
             throw new Exception(e);
         } finally {
             em.close();
@@ -67,13 +57,13 @@ public class ProductDao implements IProductDao {
         EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
 
         try {
-            this.getUserTransaction().begin();
+            em.getTransaction().begin();
             Query query = em.createQuery("DELETE  FROM Product where id = :idProduct ");
             query.setParameter("idProduct", product.getId());
             query.executeUpdate();
-            this.getUserTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
-            this.getUserTransaction().rollback();
+            em.getTransaction().rollback();
             throw new Exception(e);
         } finally {
             em.close();
@@ -81,6 +71,7 @@ public class ProductDao implements IProductDao {
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Product findByName(String name) throws Exception {
         EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
@@ -89,14 +80,14 @@ public class ProductDao implements IProductDao {
 
 
         try {
-            this.getUserTransaction().begin();
+            em.getTransaction().begin();
             String sql = "SELECT product from Product product WHERE product.name = :name";
             Query query = em.createQuery(sql);
             query.setParameter("name", name);
             list = query.getResultList();
-            this.getUserTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
-            this.getUserTransaction().rollback();
+            em.getTransaction().rollback();
             throw new Exception(e);
         }
         finally {
@@ -110,22 +101,23 @@ public class ProductDao implements IProductDao {
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Product findById(long id) throws Exception {
+    public Product findById(int id) throws Exception {
         EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
         List<Product> list = null;
         Product product = null;
 
 
         try {
-            this.getUserTransaction().begin();
+            em.getTransaction().begin();
             String sql = "SELECT product from Product product WHERE product.id = :id";
             Query query = em.createQuery(sql);
             query.setParameter("id", id);
             list = query.getResultList();
-            this.getUserTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
-            this.getUserTransaction().rollback();
+            em.getTransaction().rollback();
             throw new Exception(e);
         } finally {
             em.close();
@@ -139,6 +131,7 @@ public class ProductDao implements IProductDao {
 
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Product> findAll() throws Exception {
         EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
@@ -146,13 +139,13 @@ public class ProductDao implements IProductDao {
 
 
         try {
-            this.getUserTransaction().begin();
+            em.getTransaction().begin();
             String sql = "SELECT product from Product product";
             Query query = em.createQuery(sql);
             list = query.getResultList();
-            this.getUserTransaction().commit();
+            em.getTransaction().commit();
         } catch (Exception e) {
-            this.getUserTransaction().rollback();
+            em.getTransaction().rollback();
             throw new Exception(e);
         } finally {
             em.close();

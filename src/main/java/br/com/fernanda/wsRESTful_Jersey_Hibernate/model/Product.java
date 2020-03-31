@@ -3,13 +3,16 @@ package br.com.fernanda.wsRESTful_Jersey_Hibernate.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.transaction.Transactional;
+import java.io.Serializable;
 
 @Entity
-public class Product {
+@Transactional
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     private String name;
     private int quantity;
@@ -18,17 +21,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, int quantity, double value) {
-        this.name =  name;
-        this.quantity = quantity;
-        this.value = value;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
