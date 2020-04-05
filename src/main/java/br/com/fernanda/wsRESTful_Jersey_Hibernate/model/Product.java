@@ -1,5 +1,6 @@
 package br.com.fernanda.wsRESTful_Jersey_Hibernate.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ public class Product implements Serializable {
     @GeneratedValue
     private int id;
 
+    @Column(nullable = false, length = 50)
     private String name;
     private int quantity;
     private double value;

@@ -8,7 +8,7 @@
   <artifactId>wsRESTful_Jersey_Hibernate</artifactId>
   <packaging>war</packaging>
   <version>1.0.0</version>
-  <name>wsrest</name>
+  <name>wsRESTful_Jersey_Hibernate</name>
   <url>http://maven.apache.org</url>
 
   <repositories>
