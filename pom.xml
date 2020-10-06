@@ -5,10 +5,10 @@
 
 
   <groupId>br.com.fernanda</groupId>
-  <artifactId>wsRESTful_Jersey_Hibernate</artifactId>
+  <artifactId>ws-restful-jersey-hibernate</artifactId>
   <packaging>war</packaging>
   <version>1.0.0</version>
-  <name>wsRESTful_Jersey_Hibernate</name>
+  <name>WS RESTful Jersey Hibernate</name>
   <url>http://maven.apache.org</url>
 
   <repositories>

@@ -1,6 +1,6 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.dao;
+package br.com.fernanda.wsrestful.dao;
 
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.model.Product;
+import br.com.fernanda.wsrestful.model.Product;
 
 import java.util.List;
 

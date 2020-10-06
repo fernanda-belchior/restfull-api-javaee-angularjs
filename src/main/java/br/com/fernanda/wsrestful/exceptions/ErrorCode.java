@@ -1,4 +1,4 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.exceptions;
+package br.com.fernanda.wsrestful.exceptions;
 
 public enum ErrorCode {
     BAD_REQUEST(400),

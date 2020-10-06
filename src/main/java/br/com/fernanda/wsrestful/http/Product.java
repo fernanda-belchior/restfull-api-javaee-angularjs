@@ -1,4 +1,4 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.http;
+package br.com.fernanda.wsrestful.http;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;

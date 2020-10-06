@@ -1,9 +1,9 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.dao;
+package br.com.fernanda.wsrestful.dao;
 
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.bean.JpaResourceBean;
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.exceptions.DaoException;
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.exceptions.ErrorCode;
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.model.Product;
+import br.com.fernanda.wsrestful.bean.JpaResourceBean;
+import br.com.fernanda.wsrestful.exceptions.DaoException;
+import br.com.fernanda.wsrestful.exceptions.ErrorCode;
+import br.com.fernanda.wsrestful.model.Product;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 

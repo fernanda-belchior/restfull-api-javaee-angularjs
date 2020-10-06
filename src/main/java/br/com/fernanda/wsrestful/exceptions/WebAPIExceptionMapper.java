@@ -1,4 +1,4 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.exceptions;
+package br.com.fernanda.wsrestful.exceptions;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;

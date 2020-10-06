@@ -1,8 +1,8 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.webservice;
+package br.com.fernanda.wsrestful.webservice;
 
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.bean.IProductBean;
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.bean.ProductBean;
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.model.Product;
+import br.com.fernanda.wsrestful.bean.IProductBean;
+import br.com.fernanda.wsrestful.bean.ProductBean;
+import br.com.fernanda.wsrestful.model.Product;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;

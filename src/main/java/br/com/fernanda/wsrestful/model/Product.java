@@ -1,4 +1,4 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.model;
+package br.com.fernanda.wsrestful.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

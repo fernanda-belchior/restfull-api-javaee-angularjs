@@ -1,6 +1,6 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.bean;
+package br.com.fernanda.wsrestful.bean;
 
-import br.com.fernanda.wsRESTful_Jersey_Hibernate.model.Product;
+import br.com.fernanda.wsrestful.model.Product;
 
 import java.util.List;
 

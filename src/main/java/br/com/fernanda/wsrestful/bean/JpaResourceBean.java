@@ -1,4 +1,4 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.bean;
+package br.com.fernanda.wsrestful.bean;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

@@ -1,4 +1,4 @@
-package br.com.fernanda.wsRESTful_Jersey_Hibernate.exceptions;
+package br.com.fernanda.wsrestful.exceptions;
 
 public class ErrorMessage {
     private String message;
