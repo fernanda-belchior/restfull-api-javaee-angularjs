@@ -5,10 +5,9 @@
 
 
   <groupId>br.com.fernanda</groupId>
-  <artifactId>ws-restful-jersey-hibernate</artifactId>
+  <artifactId>restful-api-javaee-angularjs</artifactId>
   <packaging>war</packaging>
   <version>1.0.0</version>
-  <name>webapi</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -114,7 +113,7 @@
   </dependencies>
 
   <build>
-    <finalName>ws-restful-jersey-hibernate</finalName>
+    <finalName>restful-api-javaee-angularjs</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

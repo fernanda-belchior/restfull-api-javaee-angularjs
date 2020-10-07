@@ -1,4 +1,4 @@
-package br.com.fernanda.wsrestful.exceptions;
+package br.com.fernanda.restfulapi.exceptions;
 
 public class DaoException extends RuntimeException {
 

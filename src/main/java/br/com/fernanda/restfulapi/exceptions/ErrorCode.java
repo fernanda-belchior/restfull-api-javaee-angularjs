@@ -1,4 +1,4 @@
-package br.com.fernanda.wsrestful.exceptions;
+package br.com.fernanda.restfulapi.exceptions;
 
 public enum ErrorCode {
     BAD_REQUEST(400),

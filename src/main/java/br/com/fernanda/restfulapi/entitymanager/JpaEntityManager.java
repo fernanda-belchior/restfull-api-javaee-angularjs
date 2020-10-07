@@ -1,4 +1,4 @@
-package br.com.fernanda.wsrestful.entitymanager;
+package br.com.fernanda.restfulapi.entitymanager;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

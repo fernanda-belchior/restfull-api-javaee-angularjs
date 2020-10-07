@@ -1,8 +1,8 @@
-package br.com.fernanda.wsrestful.webservice;
+package br.com.fernanda.restfulapi.webservice;
 
-import br.com.fernanda.wsrestful.bean.IProductBean;
-import br.com.fernanda.wsrestful.bean.ProductBean;
-import br.com.fernanda.wsrestful.model.Product;
+import br.com.fernanda.restfulapi.bean.IProductBean;
+import br.com.fernanda.restfulapi.bean.ProductBean;
+import br.com.fernanda.restfulapi.model.Product;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;

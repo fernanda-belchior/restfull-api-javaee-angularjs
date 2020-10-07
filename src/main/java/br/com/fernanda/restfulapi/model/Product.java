@@ -1,14 +1,16 @@
-package br.com.fernanda.wsrestful.model;
+package br.com.fernanda.restfulapi.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.transaction.Transactional;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @Entity
 @Transactional
+@XmlRootElement
 public class Product implements Serializable {
 
     @Id

@@ -7,7 +7,7 @@
 
     <persistence-unit name="product" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>br.com.fernanda.wsrestful.model.Product</class>
+        <class>br.com.fernanda.restfulapi.model.Product</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

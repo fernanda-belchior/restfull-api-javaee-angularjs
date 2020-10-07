@@ -1,6 +1,6 @@
-package br.com.fernanda.wsrestful.dao;
+package br.com.fernanda.restfulapi.dao;
 
-import br.com.fernanda.wsrestful.model.Product;
+import br.com.fernanda.restfulapi.model.Product;
 
 import java.util.List;
 

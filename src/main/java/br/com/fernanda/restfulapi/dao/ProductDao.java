@@ -1,9 +1,9 @@
-package br.com.fernanda.wsrestful.dao;
+package br.com.fernanda.restfulapi.dao;
 
-import br.com.fernanda.wsrestful.entitymanager.JpaEntityManager;
-import br.com.fernanda.wsrestful.exceptions.DaoException;
-import br.com.fernanda.wsrestful.exceptions.ErrorCode;
-import br.com.fernanda.wsrestful.model.Product;
+import br.com.fernanda.restfulapi.entitymanager.JpaEntityManager;
+import br.com.fernanda.restfulapi.exceptions.DaoException;
+import br.com.fernanda.restfulapi.exceptions.ErrorCode;
+import br.com.fernanda.restfulapi.model.Product;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 

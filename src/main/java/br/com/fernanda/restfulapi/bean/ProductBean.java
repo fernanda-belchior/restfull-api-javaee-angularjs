@@ -1,8 +1,8 @@
-package br.com.fernanda.wsrestful.bean;
+package br.com.fernanda.restfulapi.bean;
 
-import br.com.fernanda.wsrestful.dao.IProductDao;
-import br.com.fernanda.wsrestful.dao.ProductDao;
-import br.com.fernanda.wsrestful.model.Product;
+import br.com.fernanda.restfulapi.dao.IProductDao;
+import br.com.fernanda.restfulapi.dao.ProductDao;
+import br.com.fernanda.restfulapi.model.Product;
 
 
 import java.util.List;
