@@ -8,7 +8,7 @@ import br.com.fernanda.wsrestful.model.Product;
 import java.util.List;
 
 
-public class  ProductBean implements IProductBean {
+public class ProductBean implements IProductBean {
 
    private IProductDao productDao = new ProductDao();
 
