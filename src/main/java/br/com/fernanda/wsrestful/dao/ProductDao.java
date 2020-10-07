@@ -1,6 +1,6 @@
 package br.com.fernanda.wsrestful.dao;
 
-import br.com.fernanda.wsrestful.bean.JpaResourceBean;
+import br.com.fernanda.wsrestful.entitymanager.JpaEntityManager;
 import br.com.fernanda.wsrestful.exceptions.DaoException;
 import br.com.fernanda.wsrestful.exceptions.ErrorCode;
 import br.com.fernanda.wsrestful.model.Product;
@@ -16,7 +16,7 @@ public class ProductDao implements IProductDao {
 
     @Override
     public void record(Product product)  {
-        EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
+        EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
 
 
         try {
@@ -35,7 +35,7 @@ public class ProductDao implements IProductDao {
 
     @Override
     public void update(Product product)  {
-        EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
+        EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
         Product productFind = new Product();
 
         if (product.getId() <= 0) {
@@ -65,7 +65,7 @@ public class ProductDao implements IProductDao {
 
     @Override
     public void remove(Product product) {
-        EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
+        EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
 
         if (product.getId() <= 0) {
             throw new DaoException("The id must be greater than 0", ErrorCode.BAD_REQUEST.getCode());
@@ -91,7 +91,7 @@ public class ProductDao implements IProductDao {
 
     @Override
     public Product findByName(String name) {
-        EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
+        EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
         List<Product> list = null;
         Product product = null;
 
@@ -125,7 +125,7 @@ public class ProductDao implements IProductDao {
 
     @Override
     public Product findById(int id) {
-        EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
+        EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
         List<Product> list = null;
         Product product = null;
 
@@ -164,7 +164,7 @@ public class ProductDao implements IProductDao {
 
     @Override
     public List<Product> findAll() {
-        EntityManager em = JpaResourceBean.getEntityManagerFactory().createEntityManager();
+        EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
         List<Product> list = null;
 
 

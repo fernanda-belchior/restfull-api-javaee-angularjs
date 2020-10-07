@@ -10,7 +10,7 @@ import java.util.List;
 @Path("/product")
 @Consumes("application/json; charset=UTF-8")
 @Produces("application/json; charset=UTF-8")
-public class ProductService {
+public class ProductWebService {
 
     private IProductBean productBean = new ProductBean();
 
@@ -35,19 +35,19 @@ public class ProductService {
     }
 
     @GET
-    @Path("/getProducts")
+    @Path("/list")
     public List<Product> getProducts() throws Exception {
         return productBean.findAll();
     }
 
     @GET
-    @Path("/getProductById/{id}")
+    @Path("/productbyid/{id}")
     public Product getProduct(@PathParam("id") int id) throws Exception {
         return productBean.findById(id);
     }
 
     @GET
-    @Path("/getProductByName/{name}")
+    @Path("/productbyname/{name}")
     public Product getProduct(@PathParam("name") String name) throws Exception {
         return productBean.findByName(name);
     }

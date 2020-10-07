@@ -1,9 +1,9 @@
-package br.com.fernanda.wsrestful.bean;
+package br.com.fernanda.wsrestful.entitymanager;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class JpaResourceBean {
+public class JpaEntityManager {
 
     private static EntityManagerFactory entityManagerFactory;
 
