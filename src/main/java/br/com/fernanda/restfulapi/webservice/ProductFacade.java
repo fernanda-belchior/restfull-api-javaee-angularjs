@@ -1,7 +1,7 @@
 package br.com.fernanda.restfulapi.webservice;
 
-import br.com.fernanda.restfulapi.bean.IProductBean;
-import br.com.fernanda.restfulapi.bean.ProductBean;
+import br.com.fernanda.restfulapi.service.IProductService;
+import br.com.fernanda.restfulapi.service.ProductService;
 import br.com.fernanda.restfulapi.model.Product;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -10,9 +10,9 @@ import java.util.List;
 @Path("/product")
 @Consumes("application/json; charset=UTF-8")
 @Produces("application/json; charset=UTF-8")
-public class ProductWebService {
+public class ProductFacade {
 
-    private IProductBean productBean = new ProductBean();
+    private IProductService productBean = new ProductService();
 
     @POST
     @Path("/save")

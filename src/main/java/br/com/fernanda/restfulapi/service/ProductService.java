@@ -1,4 +1,4 @@
-package br.com.fernanda.restfulapi.bean;
+package br.com.fernanda.restfulapi.service;
 
 import br.com.fernanda.restfulapi.dao.IProductDao;
 import br.com.fernanda.restfulapi.dao.ProductDao;
@@ -8,7 +8,7 @@ import br.com.fernanda.restfulapi.model.Product;
 import java.util.List;
 
 
-public class ProductBean implements IProductBean {
+public class ProductService implements IProductService {
 
    private IProductDao productDao = new ProductDao();
 

@@ -1,10 +1,10 @@
-package br.com.fernanda.restfulapi.bean;
+package br.com.fernanda.restfulapi.service;
 
 import br.com.fernanda.restfulapi.model.Product;
 
 import java.util.List;
 
-public interface IProductBean {
+public interface IProductService {
 
     void record (Product product) throws Exception;
     void update (Product product) throws Exception;
