@@ -17,6 +17,7 @@ public class ProductWebService {
     @POST
     @Path("/save")
     public Response save(Product product) throws Exception {
+        productBean.record(product);
         return Response.status(Response.Status.CREATED)
                 .entity(product)
                 .build();
