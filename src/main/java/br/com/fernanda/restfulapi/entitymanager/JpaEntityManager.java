@@ -5,6 +5,9 @@ import javax.persistence.Persistence;
 
 public class JpaEntityManager {
 
+    private JpaEntityManager() {
+    }
+
     private static EntityManagerFactory entityManagerFactory;
 
     public static EntityManagerFactory getEntityManagerFactory() {

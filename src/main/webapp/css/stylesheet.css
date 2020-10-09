@@ -1,0 +1,58 @@
+*{
+margin:0px;
+padding: 5px;
+width: 100%
+}
+
+
+header{
+ margin:5px;
+ height:25%;
+ text-align:center;
+ background-color: black;
+ color:lightgreen;
+}
+
+.web{
+ margin: 5px;
+padding-bottom: 5px;
+ float:left;
+ height:205px;
+ background-color: lightgray;
+}
+
+.web1{
+float:left;
+width: 40%;
+}
+
+.web2{
+ float: right;
+width: 60%;
+ 
+}
+
+.web3{
+ text-align: center;
+ margin:5px;
+ float:left;
+ padding:5px;
+ height:600px; 
+ background-color: lightgray;
+}
+
+
+p{
+height:30px;
+padding:1px;
+} 
+
+input{
+height:25px;
+border: 2px;
+}
+
+
+
+
+

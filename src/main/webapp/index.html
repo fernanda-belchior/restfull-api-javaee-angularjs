@@ -1,20 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <title>RESTful API</title>
-    <link href="css/seu-stylesheet.css" rel="stylesheet"/>
+    <link href="css/stylesheet.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body>
-    <h1 align="center">RESTful API Java Enterprise with Angular JS</h1><br><br><br>
-    <h2 align="center">Product CRUD</h2><br><br>
+<body>	
 
-    <div ng-app="">
-        <p> Product Name:     <input type="text" ng-model="name" ></p>
-        <p> Product Quantity: <input type="text" ng-model="name" ></p>
-        <p> Product Value:    <input type="text" ng-model="name" ></p>
-    </div>
+   <header>
+        <h2>RESTful API Java Enterprise with Angular JS</h2>
+        <h3>Product CRUD</h3> 		
+   </header>
+
+<div class="web">
+   <div class= "web1">	      
+        <p> Product Id:       <input type="text" ng-model="id"></p>
+	<p> Product Name:     <input type="text" ng-model="name" ></p>
+        <p> Product Quantity: <input type="text" ng-model="quantity" ></p>
+        <p> Product Value:    <input type="text" ng-model="value" ></p>      
+   </div>
+
+   <div class= "web2">	
+	         
+     
+   </div>  
+</div> 
+
+   <div class= "web3" ng-app="app" ng-controller="appController">	
+	<h3>Product List</h3>
+	        
+     
+   </div>       
+    
+   
+    
+
+
+
 </body>
 </html>
