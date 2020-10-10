@@ -2,7 +2,7 @@ package br.com.fernanda.restfulapi.service.impl;
 
 import br.com.fernanda.restfulapi.dao.ProductDao;
 import br.com.fernanda.restfulapi.dao.impl.ProductDaoImpl;
-import br.com.fernanda.restfulapi.dto.ProductDTO;
+import br.com.fernanda.restfulapi.entity.Product;
 import br.com.fernanda.restfulapi.service.ProductService;
 
 
@@ -15,33 +15,45 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public void record(ProductDTO productDTO){
-        productDao.record(productDTO);
+    public void record(Product product){
+        productDao.record(product);
     }
 
     @Override
-    public void update(ProductDTO productDTO){
-        productDao.update(productDTO);
+    public void update(Product product){
+        productDao.update(product);
     }
 
     @Override
-    public void remove(ProductDTO productDTO){
-        productDao.remove(productDTO);
+    public void remove(Product product){
+        productDao.remove(product);
     }
 
     @Override
-    public ProductDTO findByName(String name){
+    public Product findByName(String name){
         return productDao.findByName(name);
     }
 
     @Override
-    public ProductDTO findById(int id){
+    public Product findById(int id){
         return productDao.findById(id);
     }
 
     @Override
-    public List<ProductDTO> findAll(){
+    public List<Product> findAll(){
         return productDao.findAll();
+    }
+
+    public static void main(String[] args){
+        Product product = new Product();
+        product.setId(5);
+        product.setName("name");
+        product.setQuantity(5);
+        product.setValue(5);
+
+        ProductDao productDao = new ProductDaoImpl();
+        productDao.record(product);
+
     }
 }
 

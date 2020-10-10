@@ -1,4 +1,4 @@
-package br.com.fernanda.restfulapi.dto;
+package br.com.fernanda.restfulapi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Transactional
 @XmlRootElement
-public class ProductDTO implements Serializable {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue
@@ -23,7 +23,7 @@ public class ProductDTO implements Serializable {
     private double value;
 
 
-    public ProductDTO() {
+    public Product() {
         //default constructor
     }
 

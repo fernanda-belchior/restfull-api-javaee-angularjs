@@ -1,7 +1,7 @@
 package br.com.fernanda.restfulapi.dao.impl;
 
 import br.com.fernanda.restfulapi.dao.ProductDao;
-import br.com.fernanda.restfulapi.dto.ProductDTO;
+import br.com.fernanda.restfulapi.entity.Product;
 import br.com.fernanda.restfulapi.entitymanager.JpaEntityManager;
 import br.com.fernanda.restfulapi.exceptions.DaoException;
 import br.com.fernanda.restfulapi.exceptions.ErrorCode;
@@ -20,14 +20,14 @@ public class ProductDaoImpl implements ProductDao {
 
 
     @Override
-    public void record(ProductDTO productDTO)  {
+    public void record(Product product)  {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
 
 
         try {
-            productIsValid(productDTO);
+            productIsValid(product);
             em.getTransaction().begin();
-            em.persist(productDTO);
+            em.persist(product);
             em.getTransaction().commit();
         } catch (RuntimeException e) {
             throw new DaoException("Error saving product to database:"+e.getMessage(), ErrorCode.SERVER_ERROR.getCode());
@@ -39,22 +39,22 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void update(ProductDTO productDTO)  {
+    public void update(Product product)  {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
-        ProductDTO productDTOFind = new ProductDTO();
+        Product productFind = new Product();
 
-        if (productDTO.getId() <= 0) {
+        if (product.getId() <= 0) {
             throw new DaoException("The id must be greater than 0.", ErrorCode.BAD_REQUEST.getCode());
         }
 
         try {
-            productIsValid(productDTO);
+            productIsValid(product);
             em.getTransaction().begin();
-            productDTOFind = this.findById(productDTO.getId());
-            productDTOFind.setName(productDTO.getName());
-            productDTOFind.setQuantity(productDTO.getQuantity());
-            productDTOFind.setValue(productDTO.getValue());
-            em.merge(productDTOFind);
+            productFind = this.findById(product.getId());
+            productFind.setName(product.getName());
+            productFind.setQuantity(product.getQuantity());
+            productFind.setValue(product.getValue());
+            em.merge(productFind);
             em.getTransaction().commit();
         } catch (NullPointerException e) {
             em.getTransaction().rollback();
@@ -69,16 +69,16 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void remove(ProductDTO productDTO) {
+    public void remove(Product product) {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
 
-        if (productDTO.getId() <= 0) {
+        if (product.getId() <= 0) {
             throw new DaoException("The id must be greater than 0", ErrorCode.BAD_REQUEST.getCode());
         }
         try {
             em.getTransaction().begin();
-            Query query = em.createQuery("DELETE  FROM ProductDTO where id = :idProduct ");
-            query.setParameter("idProduct", productDTO.getId());
+            Query query = em.createQuery("DELETE  FROM Product where id = :idProduct ");
+            query.setParameter("idProduct", product.getId());
             query.executeUpdate();
             em.getTransaction().commit();
         } catch (IllegalArgumentException e) {
@@ -95,15 +95,15 @@ public class ProductDaoImpl implements ProductDao {
 
 
     @Override
-    public ProductDTO findByName(String name) {
+    public Product findByName(String name) {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
-        List<ProductDTO> list = null;
-        ProductDTO productDTO = null;
+        List<Product> list = null;
+        Product product = null;
 
         try {
 
             em.getTransaction().begin();
-            String sql = "SELECT product from ProductDTO product where product.name = :name";
+            String sql = "SELECT product from Product product where product.name = :name";
             Query query = em.createQuery(sql);
             query.setParameter("name", name);
             list = query.getResultList();
@@ -114,25 +114,25 @@ public class ProductDaoImpl implements ProductDao {
         } finally {
             em.close();
         }
-        if (list != null && list.size() > 0) {
-            productDTO = list.get(0);
+        if (!list.isEmpty()) {
+            product = list.get(0);
         }else {
             throw new DaoException(ERROR_FIND_BY_NAME, ErrorCode.SERVER_ERROR.getCode());
         }
-        if (productDTO ==null){
+        if (product ==null){
             throw new DaoException(ERROR_FIND_BY_NAME, ErrorCode.SERVER_ERROR.getCode());
         }
 
-        return productDTO;
+        return product;
 
     }
 
 
     @Override
-    public ProductDTO findById(int id) {
+    public Product findById(int id) {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
-        List<ProductDTO> list = null;
-        ProductDTO productDTO = null;
+        List<Product> list = null;
+        Product product = null;
 
         if (id <= 0) {
             throw new DaoException("The id must be greater than 0.", ErrorCode.BAD_REQUEST.getCode());
@@ -141,7 +141,7 @@ public class ProductDaoImpl implements ProductDao {
 
         try {
             em.getTransaction().begin();
-            String sql = "SELECT product from ProductDTO product WHERE product.id = :id";
+            String sql = "SELECT product from Product product WHERE product.id = :id";
             Query query = em.createQuery(sql);
             query.setParameter("id", id);
             list = query.getResultList();
@@ -153,29 +153,29 @@ public class ProductDaoImpl implements ProductDao {
             em.close();
         }
 
-        if (list != null && list.size() > 0) {
-            productDTO = list.get(0);
+        if (!list.isEmpty()) {
+            product = list.get(0);
         }else {
             throw new DaoException(ERROR_FIND_BY_ID, ErrorCode.SERVER_ERROR.getCode());
         }
-        if (productDTO ==null){
+        if (product ==null){
             throw new DaoException(ERROR_FIND_BY_ID, ErrorCode.SERVER_ERROR.getCode());
         }
 
-        return productDTO;
+        return product;
 
     }
 
 
     @Override
-    public List<ProductDTO> findAll() {
+    public List<Product> findAll() {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
-        List<ProductDTO> list = null;
+        List<Product> list = null;
 
 
         try {
             em.getTransaction().begin();
-            String sql = "SELECT product from ProductDTO product";
+            String sql = "SELECT product from Product product";
             Query query = em.createQuery(sql);
             list = query.getResultList();
             em.getTransaction().commit();
@@ -195,9 +195,9 @@ public class ProductDaoImpl implements ProductDao {
 
     }
 
-    private boolean productIsValid(ProductDTO productDTO) {
+    private boolean productIsValid(Product product) {
         try {
-            if ((productDTO.getName().isEmpty()) || (productDTO.getQuantity() < 0)) {
+            if ((product.getName().isEmpty()) || (product.getQuantity() < 0)) {
                 return false;
             }
         } catch (NullPointerException e) {

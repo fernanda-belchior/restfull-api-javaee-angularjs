@@ -1,6 +1,6 @@
 package br.com.fernanda.restfulapi.facade;
 
-import br.com.fernanda.restfulapi.dto.ProductDTO;
+import br.com.fernanda.restfulapi.entity.Product;
 import br.com.fernanda.restfulapi.service.ProductService;
 import br.com.fernanda.restfulapi.service.impl.ProductServiceImpl;
 
@@ -17,40 +17,40 @@ public class ProductFacade {
 
     @POST
     @Path("/save")
-    public Response save(ProductDTO productDTO) {
-        productBean.record(productDTO);
+    public Response save(Product product) {
+        productBean.record(product);
         return Response.status(Response.Status.CREATED)
-                .entity(productDTO)
+                .entity(product)
                 .build();
     }
 
     @PUT
     @Path("/update")
-    public void update(ProductDTO productDTO) {
-        productBean.update(productDTO);
+    public void update(Product product) {
+        productBean.update(product);
     }
 
     @DELETE
     @Path("/delete")
-    public void delete(ProductDTO productDTO) {
-        productBean.remove(productDTO);
+    public void delete(Product product) {
+        productBean.remove(product);
     }
 
     @GET
     @Path("/list")
-    public List<ProductDTO> getProducts() {
+    public List<Product> getProducts() {
         return productBean.findAll();
     }
 
     @GET
     @Path("/productbyid/{id}")
-    public ProductDTO getProduct(@PathParam("id") int id) {
+    public Product getProduct(@PathParam("id") int id) {
         return productBean.findById(id);
     }
 
     @GET
     @Path("/productbyname/{name}")
-    public ProductDTO getProduct(@PathParam("name") String name) {
+    public Product getProduct(@PathParam("name") String name) {
         return productBean.findByName(name);
     }
 
