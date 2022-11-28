@@ -1,4 +1,4 @@
-package br.com.fernanda.restfulapi.facade;
+package br.com.fernanda.restfulapi.controller;
 
 import br.com.fernanda.restfulapi.entity.Product;
 import br.com.fernanda.restfulapi.service.ProductService;
@@ -11,7 +11,7 @@ import java.util.List;
 @Path("/product")
 @Consumes("application/json; charset=UTF-8")
 @Produces("application/json; charset=UTF-8")
-public class ProductFacade {
+public class ProducController {
 
     private ProductService productBean = new ProductServiceImpl();
 
@@ -53,9 +53,6 @@ public class ProductFacade {
     public Product getProduct(@PathParam("name") String name) {
         return productBean.findByName(name);
     }
-
-
-
 
 
 }

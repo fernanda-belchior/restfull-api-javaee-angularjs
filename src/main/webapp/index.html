@@ -1,44 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-GB" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>RESTful API</title>
     <link href="css/stylesheet.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
-<body>	
+<body>
 
-   <header>
-        <h2>RESTful API Java Enterprise with Angular JS</h2>
-        <h3>Product CRUD</h3> 		
-   </header>
+<header>
+    <h2>RESTful API Java Enterprise with Angular JS</h2>
+    <h3>Product CRUD</h3>
+</header>
 
-<div class="web">
-   <div class= "web1">	      
-        <p> Product Id:       <input type="text" ng-model="id"></p>
-	<p> Product Name:     <input type="text" ng-model="name" ></p>
-        <p> Product Quantity: <input type="text" ng-model="quantity" ></p>
-        <p> Product Value:    <input type="text" ng-model="value" ></p>      
-   </div>
+<div  ng-app="app" ng-controller="appController">
 
-   <div class= "web2">	
-	         
-     
-   </div>  
-</div> 
+    <div class="web">
+        <form ng-submit="save()" class= "form">
+            <p> Product Name:     <input type="text" ng-model="name" ></p>
+            <p> Product Quantity: <input type="text" ng-model="quantity" ></p>
+            <p> Product Value:    <input type="text" ng-model="value" ></p><br>
+            <div class="submit">
+                <input type="submit" value="Save"/>
+            </div>
+        </form>
+        <div id="updateDetail">
+            <p>Fill in the data that will be changed and click on save to update.</p>
+        </div>
+    </div>
 
-   <div class= "web3" ng-app="app" ng-controller="appController">	
-	<h3>Product List</h3>
-	        
-     
-   </div>       
-    
-   
-    
+    <div class="listHeader">
+        <h3>Product List</h3>
+    </div>
+
+    <table>
+
+        <td>Product Name</td>
+        <td>Product Quantity</td>
+        <td>Product Value</td>
+        <td>Action</td>
+        <tr ng-repeat="product in products">
+            <td>{{ product.name }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.value }}</td>
+            <td>
+                <button ng-click="update(product)" class="button">UPDATE</button><br>
+                <button ng-click="remove(product)" class="button">REMOVE</button>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div>
 
 
+</div>
 
 </body>
+
 </html>
+
+

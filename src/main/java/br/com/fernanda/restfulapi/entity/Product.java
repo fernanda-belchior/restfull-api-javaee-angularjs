@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotBlank;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -18,16 +19,19 @@ public class Product implements Serializable {
     private int id;
 
     @Column(nullable = false, length = 50)
+    @NotBlank(message = "Name is required")
     private String name;
+
+    @NotBlank(message = "quantity is required")
     private int quantity;
+
+    @NotBlank(message = "message is required")
     private double value;
 
 
     public Product() {
         //default constructor
     }
-
-
 
     public int getId() {
         return id;

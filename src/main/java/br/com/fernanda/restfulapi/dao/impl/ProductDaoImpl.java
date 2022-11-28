@@ -41,7 +41,8 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public void update(Product product)  {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
-        Product productFind = new Product();
+        Product productFind;
+
 
         if (product.getId() <= 0) {
             throw new DaoException("The id must be greater than 0.", ErrorCode.BAD_REQUEST.getCode());

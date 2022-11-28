@@ -4,7 +4,6 @@ padding: 5px;
 width: 100%
 }
 
-
 header{
  margin:5px;
  height:25%;
@@ -14,44 +13,72 @@ header{
 }
 
 .web{
- margin: 5px;
-padding-bottom: 5px;
- float:left;
- height:205px;
+ margin-bottom: 5px;
+ margin-left: 5px;
+ margin-right: 5px;
+ height:225px;
  background-color: lightgray;
 }
-
-.web1{
-float:left;
-width: 40%;
+.form{
+ float: left;
+ width: 50%;
 }
 
-.web2{
+#updateDetail{
  float: right;
-width: 60%;
- 
+ width: 50%;
+ margin-top: 50px;
+ color: red;
+ display: none;
 }
-
-.web3{
- text-align: center;
- margin:5px;
- float:left;
- padding:5px;
- height:600px; 
- background-color: lightgray;
-}
-
 
 p{
-height:30px;
-padding:1px;
+ height:30px;
+ padding:1px;
 } 
 
 input{
-height:25px;
-border: 2px;
+ height:25px;
 }
 
+button{
+ height: 35px;
+ width: 100px;
+ align: center;
+ padding:5px;
+ background-color: lightgreen;
+}
+
+.submit input{
+ width: 100px;
+ background-color: lightgreen;
+ color: black;
+ border-color: black;
+ height: 40px;
+}
+
+table, th , td  {
+ border: 1px solid grey;
+ border-collapse: collapse;
+ padding: 5px;
+}
+
+td{
+ width: 30%;
+}
+table tr:nth-child(odd) {
+ background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+ background-color: #ffffff;
+}
+
+ .listHeader{
+ text-align: center;
+ background-color: lightgreen;
+ color: black;
+
+}
 
 
 
