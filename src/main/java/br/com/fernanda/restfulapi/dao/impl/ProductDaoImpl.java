@@ -20,7 +20,7 @@ public class ProductDaoImpl implements ProductDao {
 
 
     @Override
-    public void record(Product product)  {
+    public void save(Product product)  {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
 
 
@@ -98,8 +98,8 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public Product findByName(String name) {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
-        List<Product> list = null;
-        Product product = null;
+        List<Product> list;
+        Product product;
 
         try {
 
@@ -132,8 +132,8 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public Product findById(int id) {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
-        List<Product> list = null;
-        Product product = null;
+        List<Product> list;
+        Product product;
 
         if (id <= 0) {
             throw new DaoException("The id must be greater than 0.", ErrorCode.BAD_REQUEST.getCode());
@@ -171,7 +171,7 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public List<Product> findAll() {
         EntityManager em = JpaEntityManager.getEntityManagerFactory().createEntityManager();
-        List<Product> list = null;
+        List<Product> list;
 
 
         try {
@@ -196,17 +196,13 @@ public class ProductDaoImpl implements ProductDao {
 
     }
 
-    private boolean productIsValid(Product product) {
-        try {
-            if ((product.getName().isEmpty()) || (product.getQuantity() < 0)) {
-                return false;
-            }
-        } catch (NullPointerException e) {
+    private void productIsValid(Product product) {
+
+        if ((product.getName().isEmpty()) || (product.getQuantity() < 0))
             throw new DaoException("Product with incomplete data", ErrorCode.BAD_REQUEST.getCode());
         }
 
-        return true;
     }
 
 
-}
+

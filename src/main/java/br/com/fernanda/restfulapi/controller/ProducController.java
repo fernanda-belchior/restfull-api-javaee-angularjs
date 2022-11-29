@@ -13,12 +13,12 @@ import java.util.List;
 @Produces("application/json; charset=UTF-8")
 public class ProducController {
 
-    private ProductService productBean = new ProductServiceImpl();
+    private final ProductService productBean = new ProductServiceImpl();
 
     @POST
     @Path("/save")
     public Response save(Product product) {
-        productBean.record(product);
+        productBean.save(product);
         return Response.status(Response.Status.CREATED)
                 .entity(product)
                 .build();

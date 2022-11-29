@@ -16,7 +16,7 @@
     <h3>Product CRUD</h3>
 </header>
 
-<div  ng-app="app" ng-controller="appController">
+<div ng-app="app" ng-controller="appController">
 
     <div class="web">
         <form ng-submit="save()" class= "form">
@@ -27,21 +27,21 @@
                 <input type="submit" value="Save"/>
             </div>
         </form>
-        <div id="updateDetail">
+        <div id="updateDetail" ng-show="updateDetail">
             <p>Fill in the data that will be changed and click on save to update.</p>
         </div>
     </div>
 
-    <div class="listHeader">
+    <div class="tableHeader" >
         <h3>Product List</h3>
     </div>
 
     <table>
-
-        <td>Product Name</td>
-        <td>Product Quantity</td>
-        <td>Product Value</td>
-        <td>Action</td>
+        <caption>product attributes</caption>
+        <th>Product Name</th>
+        <th>Product Quantity</th>
+        <th>Product Value</th>
+        <th>Action</th>
         <tr ng-repeat="product in products">
             <td>{{ product.name }}</td>
             <td>{{ product.quantity }}</td>

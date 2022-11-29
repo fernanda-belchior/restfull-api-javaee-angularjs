@@ -1,4 +1,4 @@
-var app = angular.module("app", []);
+let app = angular.module("app", []);
 angular.module('app').constant('SERVER_URL','/restful_api_javaee_angularjs_war/webapi/product');
 
 app.controller("appController",  function ($scope, $http, SERVER_URL) {
@@ -6,27 +6,27 @@ app.controller("appController",  function ($scope, $http, SERVER_URL) {
     $scope.products = [];
     _refreshPageData();
 
-
-    $scope.save = function (id) {
-        var method = "";
-        var data = {};
-        var url;
+    $scope.save = function () {
+        $scope.updateDetail = false;
+        let method;
+        let data = {};
+        let url;
 
         data.name = $scope.name;
         data.quantity = $scope.quantity;
         data.value = $scope.value;
+        $scope.message = 'Product added!';
 
-        if (id=="") {
-            url = "/save";
-            method = "POST";
-            url = SERVER_URL + url;
-        }
-        else
-        {
-            document.getElementById("updateDetail").style.display = "none";
+        if ($scope.id>=0){
+            $scope.message = 'Product data updated!';
             url = SERVER_URL + "/update";
             method = "PUT";
             data.id = $scope.id;
+        }
+
+        else
+        {   url = SERVER_URL+"/save";
+            method = "POST";
         }
 
         $http({
@@ -36,25 +36,37 @@ app.controller("appController",  function ($scope, $http, SERVER_URL) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(_success, _error);
+        }).then (function success(){
+                $scope.errorMessage = '';
+                alert($scope.message);
+                _refreshPageData();
+                _clearForm();
+
+            },
+            function error(){
+                $scope.errorMessage = 'Error adding product!';
+                $scope.message = '';
+                alert($scope.errorMessage);
+            });
     };
 
 
     $scope.update = function (product){
-        document.getElementById("updateDatails").style.display = "block";
+        $scope.updateDetail = true;
         $scope.id = product.id;
         $scope.name = product.name;
         $scope.quantity = product.quantity;
         $scope.value = product.value;
+
     };
 
     $scope.remove = function (product) {
-        var method = "";
-        var url = "/delete";
-        var data = {};
+        let method;
+        let data = {};
+        let url;
 
         method = "DELETE";
-        url = SERVER_URL+url;
+        url = SERVER_URL+"/delete";
         data.id= product.id;
         data.name = product.name;
         data.quantity = product.quantity;
@@ -67,8 +79,21 @@ app.controller("appController",  function ($scope, $http, SERVER_URL) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(_success, _error);
+        }).then (function success() {
+                $scope.message = 'Product deleted!';
+                $scope.errorMessage='';
+                alert($scope.message);
+                _refreshPageData();
+                _clearForm()
+
+            },
+            function error() {
+                $scope.errorMessage = 'Error deleting product!';
+                $scope.message='';
+                alert($scope.errorMessage);
+        });
     };
+
 
     /* Private Methods */
 
@@ -84,24 +109,15 @@ app.controller("appController",  function ($scope, $http, SERVER_URL) {
         });
     }
 
-    function _success(response) {
-        _refreshPageData();
-        _clearForm()
-    }
-
-    function _error(response) {
-        alert(response.data.message || response.statusText);
-    }
-
     //Clear the form
     function _clearForm() {
         $scope.name = "";
         $scope.quantity = "";
         $scope.value = "";
-        $scope.id = "";
-    }
-});
 
+    }
+
+});
 
 
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    void record (Product product);
+    void save (Product product);
     void update (Product product);
     void remove (Product product);
     Product findByName(String name);

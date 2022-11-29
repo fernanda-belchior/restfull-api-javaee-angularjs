@@ -29,7 +29,6 @@ header{
  width: 50%;
  margin-top: 50px;
  color: red;
- display: none;
 }
 
 p{
@@ -44,8 +43,8 @@ input{
 button{
  height: 35px;
  width: 100px;
- align: center;
  padding:5px;
+ margin: 2px;
  background-color: lightgreen;
 }
 
@@ -73,7 +72,7 @@ table tr:nth-child(even) {
  background-color: #ffffff;
 }
 
- .listHeader{
+ .tableHeader{
  text-align: center;
  background-color: lightgreen;
  color: black;

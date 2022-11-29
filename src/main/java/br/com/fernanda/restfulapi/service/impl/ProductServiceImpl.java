@@ -11,12 +11,12 @@ import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
 
-   private ProductDao productDao = new ProductDaoImpl();
+   private final ProductDao productDao = new ProductDaoImpl();
 
 
     @Override
-    public void record(Product product){
-        productDao.record(product);
+    public void save(Product product){
+        productDao.save(product);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
         product.setValue(5);
 
         ProductDao productDao = new ProductDaoImpl();
-        productDao.record(product);
+        productDao.save(product);
 
     }
 
